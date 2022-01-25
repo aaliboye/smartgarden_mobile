@@ -1,0 +1,7 @@
+{
+  "name": "toolbi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
