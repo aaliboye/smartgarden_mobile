@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajouter jardin</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button text="" defaultHref="/home"></ion-back-button>
+      <ion-menu-button slot="end" color="dark">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="locationForm" (ngSubmit)="onFormSubmit()">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrition</ion-label>
+      <ion-input formControlName="description" type="text" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" shape="full" expand="block">Add Location</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

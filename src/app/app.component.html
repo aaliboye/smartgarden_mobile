@@ -1,3 +1,24 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
+<ion-app >
+  <ion-menu side="start" contentId="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Configuration</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <!--<div style="height: 150px; background-color: rgb(255, 255, 255);">
+        <h3 style="margin-left: 10%; padding-top: 10%;">Assane Ali boye</h3>
+        <h2 style="margin-left: 10%;">771117165</h2>
+      </div>-->
+      <div>
+        <ion-list >
+          <ion-item >Ajouter Jardin</ion-item>
+          <ion-item [routerLink]="['/select-jardin']" routerDirection="forward">ajouter Module</ion-item>
+          <ion-item [routerLink]="['/select-jardin']" routerDirection="forward">Ajouter zone</ion-item>
+          <ion-item >Ajouter module</ion-item>
+        </ion-list>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet Id="main"></ion-router-outlet>
 </ion-app>

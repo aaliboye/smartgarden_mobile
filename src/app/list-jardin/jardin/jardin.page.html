@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title >Le jardin</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button text="" defaultHref="/list-jardin"></ion-back-button>
+      <ion-menu-button slot="end" color="dark">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="position: fixed; z-index: 1;">
+    <img src="{{jardin.imageUrl}}" style="width: max-content; height: 30vh;">
+ 
+  <ion-row >
+    <ion-col size="12">
+      <ion-card style="margin-top: -37px; align-items: center; width: 30vm;">
+        <div style="text-align: center;">
+          <h5 style="font-weight: bold;">{{jardin.nom}}</h5>
+          <h6 style="font-style: italic;">{{jardin.description}}</h6>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</div>
+
+<div  style="margin-top: 43vh;">
+  
+  <div class="zone" *ngFor="let zone of zones" style="margin-top: 20px;">
+    <div class="icon">
+      <ion-icon style="height: 3vh; width: 9vw;" slot="start" color="dark" name="trash-outline" (click)="deleteZone()"></ion-icon> <br>
+      <ion-icon style="height: 3vh; width: 9vw;"  slot="start" color="dark" name="create" [routerLink]="['./edit-zone', zone.id]"></ion-icon> <br>
+    </div>
+    <ion-row>
+      <ion-col size="3">
+        <img class="imZone" src="{{zone.imageUrl}}" alt="" (click)="addPhoto(zone.id)">
+      </ion-col>
+      <ion-col size="6" sli>
+        <h5 style="font-weight: bold;" (click)="openModal()">{{zone.nom}}</h5>
+        <h6 style="font-style: italic; font-size: medium;">{{zone.description}}</h6>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" [routerLink]="'./add-zone'">
+  <ion-fab-button color="danger" >
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>
