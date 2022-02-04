@@ -1,3 +1,4 @@
+import { JardinService } from './../../services/jardin.service';
 import { Router } from '@angular/router';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -12,7 +13,9 @@ export class AddJardinPage implements OnInit {
 
   constructor(private router: Router,
     public fb: FormBuilder,
-    private zone: NgZone,) 
+    private zone: NgZone,
+    private jarService: JardinService,
+    ) 
     {
     this.locationForm = this.fb.group({
       name: [''],
@@ -24,7 +27,19 @@ export class AddJardinPage implements OnInit {
   }
 
   onFormSubmit(){
-
+    if (!this.locationForm.valid) {
+      return false;
+    } else {
+      this.jarService.addLocation(this.locationForm.value)
+        .subscribe((res) => {
+          this.zone.run(() => {
+            console.log(res)
+            this.locationForm.reset();
+            this.router.navigate(['/list-jardin']);
+          })
+        });
+    }
   }
+
 
 }

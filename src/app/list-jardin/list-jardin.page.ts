@@ -4,7 +4,7 @@ import { JardinService } from './../services/jardin.service';
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { PopoverController, NavController } from '@ionic/angular';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-jardin',
@@ -13,7 +13,7 @@ import { PopoverController, NavController } from '@ionic/angular';
 })
 export class ListJardinPage implements OnInit {
 
-  locations: any[]
+  locations: any = [];
   loc: any;
   image='https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg';
   idjardin: any;
@@ -27,12 +27,10 @@ export class ListJardinPage implements OnInit {
     }
 
   ngOnInit(): void {
-      this.locations = this.jarService.getJardins();
-      this.jardin = this.jarService.getJardin(this.idjardin);
+      
   }
 
   async addPhoto(id: any) {
-    this.jardin = this.jarService.getJardin(id);
     const libraryImage = await this.openLibrary();
     this.jardin.imageUrl = 'data:image/jpg;base64,' + libraryImage;
 }
@@ -50,10 +48,13 @@ async openLibrary() {
   return await this.camera.getPicture(options);
 }
 
-async openPopover(ev: any){
+async openPopover(ev: any, idjardin: any){
   const popover =  await this.poCtrl.create({
     component: PopoverComponent,
-    event: ev
+    event: ev,
+    componentProps: {
+      id : idjardin
+    }
   })
   return await popover.present();
 }
@@ -68,5 +69,11 @@ addJar(){
   this.router.navigateByUrl('/list-jardin/add-jardin');
 }
 
+ionViewDidEnter(): void {
+  this.jarService.getLocationsList().subscribe((res) => {
+    console.log(res)
+    this.locations = res;
+  })
+}
   
 }

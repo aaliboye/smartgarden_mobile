@@ -9,14 +9,18 @@
         <!-- <ion-icon color="light" name="cloudy-night"></ion-icon> -->
         <!-- <img src="../../assets/logo.png"> -->
       </div>
-      
-      <ion-item class="tel">
-        <ion-icon slot="start" name="call-outline"></ion-icon>  
-        <ion-input color="dark" type="tel" placeholder="telephone"></ion-input>
-      </ion-item>
-      
-      
-      <ion-button (click)="onClick()" color="light" expand="block" shape="round" fill="outline">Connexion</ion-button>
+
+      <form [formGroup]="validationPhone">
+
+        
+        <ion-item class="tel">
+          <ion-icon slot="start" name="call-outline"></ion-icon>  
+          <ion-input color="dark" formControlName="phone"  type="tel" placeholder="telephone"></ion-input>
+        </ion-item>
+        
+        
+        <ion-button (click)="slideToCodeVerification()" color="light" expand="block" shape="round" fill="outline">Connexion</ion-button>
+      </form>
       
       
     </div>

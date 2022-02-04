@@ -11,15 +11,18 @@
         <!-- <ion-icon color="light" name="cloudy-night"></ion-icon> -->
         <!-- <img src="../../assets/logo.png"> -->
       </div>
+
+      
+      <form [formGroup]="confirmCode"> 
       
       <ion-item class="tel">
         <ion-icon name="key-outline"></ion-icon>
-        <ion-input color="dark" type="code" placeholder="code confirmation"></ion-input>
+        <ion-input color="dark" formControlName="code"  type="code" placeholder="code confirmation"></ion-input>
       </ion-item>
+    </form>
       
-      
-      <ion-button [routerLink]="'/home'" color="light" expand="block" shape="round" fill="outline">Valider</ion-button>
-      
+      <ion-button (click)="verifyOtp()" color="light" expand="block" shape="round" fill="outline">Valider</ion-button>
+    
       
     </div>
   </div>

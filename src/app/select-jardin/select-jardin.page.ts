@@ -25,4 +25,7 @@ export class SelectJardinPage implements OnInit {
     this.jardins = this.jarService.getJardins();
 
   }
+  onClick(){
+    
+  }
 }

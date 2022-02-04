@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./add-jardin/add-jardin.module').then( m => m.AddJardinPageModule)
   },
   {
-    path: 'edit-jardin/:id',
+    path: 'edit-jardin/:idjardin',
     loadChildren: () => import('./edit-jardin/edit-jardin.module').then( m => m.EditJardinPageModule)
   },
   {

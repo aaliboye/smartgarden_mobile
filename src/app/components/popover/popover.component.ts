@@ -1,7 +1,7 @@
 import { JardinService } from 'src/app/services/jardin.service';
 import { NavController, PopoverController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-popover',
@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./popover.component.scss'],
 })
 export class PopoverComponent implements OnInit {
+  @Input() id : any;
+
   idJardin: any;
   jardin:any;
   jardins:any;
@@ -35,6 +37,7 @@ export class PopoverComponent implements OnInit {
     this.navCtrl.navigateRoot('/list-jardin/jardin/'+ 0);
     this.popCtrl.dismiss();
   }
-  
+
+
 
 }

@@ -29,7 +29,7 @@
 
 
     <div class="location" *ngFor="let location of locations"  >
-      <ion-icon  slot="start" name="ellipsis-vertical-outline" (click)="openPopover($event)"></ion-icon>
+      <ion-icon  slot="start" name="ellipsis-vertical-outline" (click)="openPopover($event, location.id)"></ion-icon>
       <h3 [routerLink] = "['./jardin/', location.id]">{{location.nom}} </h3>
       <h6>{{location.description}}</h6>
       <img src="{{location.imageUrl}}" alt="" (click)="addPhoto(location.id)">
